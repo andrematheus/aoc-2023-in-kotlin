@@ -1,4 +1,4 @@
-rootProject.name = "aoc-2023-in-kotlinn"
+rootProject.name = "aoc-2023-in-kotlin"
 
 pluginManagement {
     repositories {
