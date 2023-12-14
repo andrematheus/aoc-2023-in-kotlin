@@ -64,16 +64,6 @@ data class Diagram(val points: List<List<Point>>) {
         return points[coord.y][coord.x]
     }
 
-    fun print() {
-        for (line in points) {
-            for (point in line) {
-                print(point.symbol.toString().padStart(3))
-            }
-            kotlin.io.println()
-        }
-        println("____")
-    }
-
     fun isInsideLoop(point: Point): Boolean {
         if (loop.contains(point)) {
             return false
@@ -129,11 +119,9 @@ data class Diagram(val points: List<List<Point>>) {
         return area
     }
     fun fixStartingPoint() {
-        val (north, south, east, west) = listOf(
+        val (north, east) = listOf(
             startingPoint.coord.north(),
-            startingPoint.coord.south(),
             startingPoint.coord.east(),
-            startingPoint.coord.west(),
         ).map { if (contains(it)) pointAt(it) else null }
         val symbol = if (north?.symbol?.connections()?.contains(Connection.South) == true) {
             if (east?.symbol?.connections()?.contains(Connection.West) == true) {
